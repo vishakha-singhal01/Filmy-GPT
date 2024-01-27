@@ -1,10 +1,23 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import Header from "./Header";
+import { checkValidateData } from "../utils/Validate";
 
 const Login = () => {
   const[isSignInForm, setIsSignInForm] = useState(true)
+  const[errorMessage, setErrorMessage] = useState(null)
+  const email = useRef(null);
+  const password = useRef(null);
+
   const toggleSignInForm = ()=>{
     setIsSignInForm(!isSignInForm)
+  }
+
+  const handleButtonClick = ()=>{
+    //validate the form data
+    console.log(email.current.value);
+    console.log(password.current.value);
+    const message = checkValidateData(email.current.value,password.current.value)
+    setErrorMessage(message)
   }
   return (
     <>
@@ -15,7 +28,10 @@ const Login = () => {
           alt="background-image"
         />
       </div>
-      <form className="w-3/12 absolute p-12 bg-black my-36 mx-auto right-0 left-0 text-white bg-opacity-80">
+      <form 
+      onSubmit={(e)=> e.preventDefault()}
+      className="w-3/12 absolute p-12 bg-black my-36 mx-auto right-0 left-0 text-white bg-opacity-80"
+      >
         <h1 className="font-bold my-3 text-3xl p-2">{isSignInForm? "Sign In" : "Sign Out"}</h1>
         {!isSignInForm && <input
           type="text"
@@ -23,15 +39,18 @@ const Login = () => {
           className="p-3 my-3 w-full bg-gray-700"
         />}
         <input
+          ref={email}
           type="text"
           placeholder="Email or phone number"
           className="p-3 my-3 w-full bg-gray-700"
         />
         <input 
-        type="text" 
-        placeholder="Password" 
-        className="p-3 my-3 w-full bg-gray-700" />
-        <button className="p-3 my-6 bg-red-700 w-full rounded-lg">{isSignInForm? "Sign In" : "Sign Out"}</button>
+          ref={password}
+          type="text" 
+          placeholder="Password" 
+          className="p-3 my-3 w-full bg-gray-700" />
+          <p className="text-red-600">* {errorMessage}</p>
+        <button className="p-3 my-6 bg-red-700 w-full rounded-lg" onClick={handleButtonClick}>{isSignInForm? "Sign In" : "Sign Out"}</button>
         <p className="px-2 py-6 cursor-pointer underline" onClick={toggleSignInForm}>{isSignInForm? "New to Netflix? Sign up now." : "Already a user. Sign In"}</p>
       </form>
     </>

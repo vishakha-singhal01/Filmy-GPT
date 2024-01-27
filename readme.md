@@ -2,6 +2,10 @@
 - create react app
 - configure tailwind
 - Header
+- Routing of App
+- Login/Signup Form
+- Form Validation
+- useRef Hook
 
 # Features
 1) Login/Signup page
