@@ -32,7 +32,7 @@ const Login = () => {
         placeholder="Password" 
         className="p-3 my-3 w-full bg-gray-700" />
         <button className="p-3 my-6 bg-red-700 w-full rounded-lg">{isSignInForm? "Sign In" : "Sign Out"}</button>
-        <p className="px-2 py-6 cursor-pointer" onClick={toggleSignInForm}>{isSignInForm? "New to Netflix? Sign up now." : "Already a user. Sign In"}</p>
+        <p className="px-2 py-6 cursor-pointer underline" onClick={toggleSignInForm}>{isSignInForm? "New to Netflix? Sign up now." : "Already a user. Sign In"}</p>
       </form>
     </>
   );
