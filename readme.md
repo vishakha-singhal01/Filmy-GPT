@@ -6,6 +6,8 @@
 - Login/Signup Form
 - Form Validation
 - useRef Hook
+- Firebase setup
+- Deployed on Firebase
 
 # Features
 1) Login/Signup page
