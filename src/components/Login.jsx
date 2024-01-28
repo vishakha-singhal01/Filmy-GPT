@@ -1,6 +1,8 @@
 import React, { useRef, useState } from "react";
 import Header from "./Header";
 import { checkValidateData } from "../utils/Validate";
+import {createUserWithEmailAndPassword, signInWithEmailAndPassword} from "firebase/auth"
+import { auth } from "../utils/Firebase";
 
 const Login = () => {
   const[isSignInForm, setIsSignInForm] = useState(true)
@@ -14,10 +16,46 @@ const Login = () => {
 
   const handleButtonClick = ()=>{
     //validate the form data
-    console.log(email.current.value);
-    console.log(password.current.value);
     const message = checkValidateData(email.current.value,password.current.value)
     setErrorMessage(message)
+    if(message) return;
+
+    // SignIn / SignUp logic
+
+    if(!isSignInForm){
+      //signup logic
+      createUserWithEmailAndPassword(
+        auth, 
+        email.current.value,
+        password.current.value
+        )
+      .then((userCredential) => {
+        const user = userCredential.user;
+        console.log(user)
+      })
+      .catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        setErrorMessage(errorCode + errorMessage)
+      });
+    }
+    else{
+      //signin logic
+      signInWithEmailAndPassword(
+        auth, 
+        email.current.value,
+        password.current.value
+        )
+      .then((userCredential) => {
+        const user = userCredential.user;
+        console.log(user)
+      })
+      .catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        setErrorMessage(errorCode + errorMessage)
+      });
+    }
   }
   return (
     <>
@@ -32,7 +70,7 @@ const Login = () => {
       onSubmit={(e)=> e.preventDefault()}
       className="w-3/12 absolute p-12 bg-black my-32 mx-auto right-0 left-0 text-white bg-opacity-80"
       >
-        <h1 className="font-bold my-3 text-3xl p-2">{isSignInForm? "Sign In" : "Sign Out"}</h1>
+        <h1 className="font-bold my-3 text-3xl p-2">{isSignInForm? "Sign In" : "Sign Up"}</h1>
         {!isSignInForm && <input
           type="text"
           placeholder="Enter Full Name"
@@ -50,7 +88,7 @@ const Login = () => {
           placeholder="Password" 
           className="p-3 my-3 w-full bg-gray-700" />
           <p className="text-red-600">{errorMessage}</p>
-        <button className="p-3 my-6 bg-red-700 w-full rounded-lg" onClick={handleButtonClick}>{isSignInForm? "Sign In" : "Sign Out"}</button>
+        <button className="p-3 my-6 bg-red-700 w-full rounded-lg" onClick={handleButtonClick}>{isSignInForm? "Sign In" : "Sign Up"}</button>
         <p className="px-2 py-6 cursor-pointer underline" onClick={toggleSignInForm}>{isSignInForm? "New to Netflix? Sign up now." : "Already a user? Sign In"}</p>
       </form>
     </>
