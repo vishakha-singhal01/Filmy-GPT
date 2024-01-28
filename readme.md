@@ -1,4 +1,4 @@
-# Netflix GPT
+# Filmy GPT
 - create react app
 - configure tailwind
 - Header
@@ -25,6 +25,6 @@
       - Title & Description
       - Movie Suggestions
          - Movie Lists * N
-3) NetflixGPT
+3) FilmyGPT
    - Search Bar GPT connect
    - Movie Suggestions
