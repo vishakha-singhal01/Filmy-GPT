@@ -30,7 +30,7 @@ const Login = () => {
       </div>
       <form 
       onSubmit={(e)=> e.preventDefault()}
-      className="w-3/12 absolute p-12 bg-black my-36 mx-auto right-0 left-0 text-white bg-opacity-80"
+      className="w-3/12 absolute p-12 bg-black my-32 mx-auto right-0 left-0 text-white bg-opacity-80"
       >
         <h1 className="font-bold my-3 text-3xl p-2">{isSignInForm? "Sign In" : "Sign Out"}</h1>
         {!isSignInForm && <input
@@ -49,9 +49,9 @@ const Login = () => {
           type="text" 
           placeholder="Password" 
           className="p-3 my-3 w-full bg-gray-700" />
-          <p className="text-red-600">* {errorMessage}</p>
+          <p className="text-red-600">{errorMessage}</p>
         <button className="p-3 my-6 bg-red-700 w-full rounded-lg" onClick={handleButtonClick}>{isSignInForm? "Sign In" : "Sign Out"}</button>
-        <p className="px-2 py-6 cursor-pointer underline" onClick={toggleSignInForm}>{isSignInForm? "New to Netflix? Sign up now." : "Already a user. Sign In"}</p>
+        <p className="px-2 py-6 cursor-pointer underline" onClick={toggleSignInForm}>{isSignInForm? "New to Netflix? Sign up now." : "Already a user? Sign In"}</p>
       </form>
     </>
   );
