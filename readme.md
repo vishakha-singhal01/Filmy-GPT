@@ -7,7 +7,7 @@
 - Form Validation
 - useRef Hook
 - Firebase setup
-- Deployed on Firebase
+- Deployed on Netlify
 - Create Signup user Account
 - Implement SignIn user API
 - Created Redux Store with userSlice 
