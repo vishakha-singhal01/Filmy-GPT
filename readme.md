@@ -13,9 +13,7 @@
 - Created Redux Store with userSlice 
 - Implemented Sign Out
 - Update Profile API Call (Bug Fix)
-- Restricted URL (Bug Fix)
-- Update Profile API Call
-- Auth check while navigating
+- Restricted URL - Auth check (Bug Fix)
 
 # Features
 1) Login/Signup page
