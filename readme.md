@@ -14,6 +14,9 @@
 - Implemented Sign Out
 - Update Profile API Call (Bug Fix)
 - Restricted URL - Auth check (Bug Fix)
+- Added hardcoded values into constants file
+- Registered TMDB API & make API call
+- Created MoviesSlice & add data in our Redux Store
 
 # Features
 1) Login/Signup page
