@@ -10,7 +10,6 @@ import { addUser } from "../utils/UserSlice";
 const Login = () => {
   const[isSignInForm, setIsSignInForm] = useState(true)
   const[errorMessage, setErrorMessage] = useState(null)
-  const navigate = useNavigate();
   const dispatch = useDispatch();
   const email = useRef(null);
   const name = useRef(null);
@@ -50,7 +49,6 @@ const Login = () => {
                displayName: displayName, 
                photoURL: photoURL
               }))
-          navigate("/browse")
         }).catch((error) => {
           setErrorMessage(error.message)
         });
@@ -71,8 +69,6 @@ const Login = () => {
         )
       .then((userCredential) => {
         const user = userCredential.user;
-        console.log(user)
-        navigate("/browse")
       })
       .catch((error) => {
         const errorCode = error.code;

@@ -12,7 +12,8 @@
 - Implement SignIn user API
 - Created Redux Store with userSlice 
 - Implemented Sign Out
-- Update Profile API Call
+- Update Profile API Call (Bug Fix)
+- Restricted URL (Bug Fix)
 
 # Features
 1) Login/Signup page
