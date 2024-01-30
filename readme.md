@@ -17,6 +17,7 @@
 - Added hardcoded values into constants file
 - Registered TMDB API & make API call
 - Created MoviesSlice & add data in our Redux Store
+- custom hooks
 
 # Features
 1) Login/Signup page
